@@ -1,0 +1,614 @@
+<html manifest="ps4jb.cache">
+
+<!-- Mirrored from https://voltjo.com/505_960/cache.html by HTTrack Website Copier/3.x [XR&CO], Wed, 04 Nov 2026 12:55:00 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="utf-8">
+  <title>VOLT CACHE INSTALLER</title>
+
+  <style>
+    :root {
+      --bg: #020B18;
+      --accent: #00CFFF;
+      --accent-glow: rgba(0,207,255,0.42);
+      --purple: #A855F7;
+      --success: #00E676;
+      --error: #FF5252;
+      --text: #B8DCFF;
+      --muted: #4E82A0;}
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;}
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;}
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      position: relative;}
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent 0px,
+        transparent 2px,
+        rgba(0,60,140,0.05) 2px,
+        rgba(0,60,140,0.05) 3px);
+      pointer-events: none;
+      z-index: 9999;}
+    @keyframes rgb-cycle {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }}
+    .rgb-shell {
+      width: 100%;
+      max-width: 960px;
+      height: calc(100vh - 36px);
+      padding: 2px;
+      border-radius: 14px;
+      background: linear-gradient(
+        60deg,
+        #ff2020,
+        #ff7700,
+        #ffee00,
+        #00ff55,
+        #00cfff,
+        #0055ff,
+        #9900ff,
+        #ff00cc,
+        #ff2020);
+      background-size: 400% 400%;
+      animation: rgb-cycle 4s linear infinite;
+      box-shadow:
+        0 0 25px rgba(0,150,255,0.40),
+        0 0 60px rgba(0,100,255,0.20),
+        0 0 120px rgba(0,50,255,0.10),
+        0 28px 70px rgba(0,0,0,0.75);
+      position: relative;
+      z-index: 2;}
+    .shell {
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      background: rgba(4,10,22,0.72);
+      display: flex;
+      flex-direction: column;}
+    .topbar {
+      background: linear-gradient(
+        135deg,
+        rgba(8,21,46,0.88),
+        rgba(5,14,32,0.88));
+      padding: 14px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;}
+    .topbar::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 55%;
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0,207,255,0.70),
+        transparent);
+    }
+    .topbar::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0,207,255,0.45),
+        transparent
+      );
+      box-shadow: 0 0 10px rgba(0,207,255,0.40);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+
+      background: linear-gradient(
+        135deg,
+        rgba(0,207,255,0.18),
+        rgba(0,207,255,0.04)
+      );
+
+      border: 1px solid rgba(0,207,255,0.38);
+      border-radius: 8px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 1.25rem;
+
+      animation: icon-pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes icon-pulse {
+      0%, 100% {
+        box-shadow: 0 0 12px rgba(0,207,255,0.22);
+      }
+
+      50% {
+        box-shadow:
+          0 0 28px rgba(0,207,255,0.55),
+          0 0 50px rgba(0,207,255,0.18);
+      }
+    }
+
+    .brand-name {
+      font-size: 1rem;
+      font-weight: bold;
+      letter-spacing: 3px;
+      color: #fff;
+
+      text-shadow:
+        0 0 20px rgba(0,207,255,0.55);
+    }
+
+    .brand-sub {
+      font-size: 0.67rem;
+      font-weight: bold;
+      color: var(--muted);
+
+      margin-top: 3px;
+      letter-spacing: 2.5px;
+    }
+
+    .version-tag {
+      font-size: 0.66rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+
+      color: var(--accent);
+
+      border: 1px solid rgba(0,207,255,0.38);
+      background: rgba(0,207,255,0.08);
+
+      padding: 5px 10px;
+      border-radius: 5px;
+
+      text-shadow: 0 0 10px var(--accent-glow);
+    }
+
+    /* MAIN */
+    .main-content {
+      flex: 1;
+
+      display: flex;
+      flex-direction: column;
+
+      min-height: 0;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(8,14,30,0.68),
+          rgba(6,11,24,0.72)
+        );
+
+      padding: 18px;
+      gap: 13px;
+
+      position: relative;
+    }
+
+    .main-content::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+
+      background:
+        radial-gradient(
+          ellipse 80% 40% at 50% 0%,
+          rgba(0,120,255,0.06),
+          transparent 60%
+        );
+
+      pointer-events: none;
+    }
+
+    /* TITLE */
+    .header-section {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .main-title {
+      font-size: clamp(1.2rem, 3vw, 2rem);
+      font-weight: 800;
+
+      background: linear-gradient(
+        45deg,
+        #ff00aa,
+        #00ffff,
+        #ff00ff,
+        #00ff9d
+      );
+
+      background-size: 300% 300%;
+
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      animation: gradientFlow 8s ease infinite;
+
+      text-shadow:
+        0 0 30px rgba(255,0,170,0.35);
+    }
+
+    @keyframes gradientFlow {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* CACHE STATUS */
+    .cache-status {
+      position: relative;
+      z-index: 1;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      font-size: 0.85rem;
+      font-weight: 700;
+
+      color: #fff;
+
+      padding: 0 2px;
+    }
+
+    #cache-percent {
+      color: var(--accent);
+
+      text-shadow:
+        0 0 12px rgba(0,207,255,0.55);
+    }
+
+    /* LOADING BAR */
+    .progress-box {
+      position: relative;
+      z-index: 1;
+
+      width: 100%;
+
+      background: rgba(3,8,18,0.55);
+
+      border: 1px solid rgba(0,207,255,0.22);
+
+      border-radius: 8px;
+
+      padding: 4px;
+
+      box-shadow:
+        inset 0 0 18px rgba(0,120,255,0.04),
+        0 0 15px rgba(0,120,255,0.05);
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 14px;
+
+      background: rgba(0,0,0,0.45);
+
+      border-radius: 5px;
+
+      overflow: hidden;
+
+      box-shadow:
+        inset 0 0 8px rgba(0,0,0,0.8);
+    }
+
+    #progress-bar {
+      width: 0%;
+      height: 100%;
+
+      background: linear-gradient(
+        90deg,
+        #00cfff,
+        #00ffff,
+        #a855f7,
+        #ff00cc
+      );
+
+      background-size: 200% 100%;
+
+      animation: progressGlow 2s linear infinite;
+
+      border-radius: 5px;
+
+      transition: width 0.25s ease;
+
+      box-shadow:
+        0 0 12px rgba(0,207,255,0.65),
+        0 0 25px rgba(168,85,247,0.35);
+    }
+
+    @keyframes progressGlow {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      100% {
+        background-position: 200% 50%;
+      }
+    }
+
+    /* CONSOLE */
+    .console-wrap {
+      flex: 1;
+
+      display: flex;
+      flex-direction: column;
+
+      min-height: 0;
+
+      position: relative;
+      z-index: 1;
+    }
+
+    .console-bar {
+      background: rgba(3,8,18,0.72);
+
+      border: 1px solid rgba(168,85,247,0.28);
+
+      border-bottom: 1px solid rgba(168,85,247,0.12);
+
+      border-radius: 8px 8px 0 0;
+
+      padding: 8px 14px;
+
+      display: flex;
+      align-items: center;
+
+      flex-shrink: 0;
+    }
+
+    .console-title {
+      width: 100%;
+
+      font-size: 15px;
+      font-weight: bold;
+
+      letter-spacing: 2px;
+
+      color: white;
+
+      text-align: center;
+
+      text-shadow:
+        0 0 8px rgba(168,85,247,0.65);
+    }
+
+    #console {
+      flex: 1;
+
+      min-height: 0;
+
+      position: relative;
+      z-index: 2;
+
+      font-family: Consolas, "Courier New", monospace;
+
+      color: #B8DCFF;
+
+      background: rgba(0,0,0,0.28);
+
+      border: 1px solid rgba(168,85,247,0.22);
+
+      border-top: none;
+
+      border-radius: 0 0 8px 8px;
+
+      padding: 12px 14px;
+
+      font-size: 13px;
+      line-height: 1.65;
+
+      text-align: left;
+
+      white-space: pre-wrap;
+
+      overflow-y: auto;
+
+      text-shadow:
+        0 0 8px rgba(0,207,255,0.16);
+
+      scrollbar-width: thin;
+
+      scrollbar-color:
+        rgba(168,85,247,0.30)
+        transparent;
+    }
+
+    #console::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    #console::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    #console::-webkit-scrollbar-thumb {
+      background: rgba(168,85,247,0.30);
+      border-radius: 3px;
+    }
+
+    /* FOOTER */
+    .footer {
+      flex-shrink: 0;
+
+      background: rgba(6,11,24,0.70);
+
+      border-top:
+        1px solid rgba(0,100,180,0.12);
+
+      text-align: center;
+
+      font-size: 0.62rem;
+
+      color: #7C9AAF;
+
+      padding: 7px 10px;
+
+      letter-spacing: 0.5px;
+
+      position: relative;
+      z-index: 2;
+    }
+
+    .footer strong {
+      color: #B8DCFF;
+
+      text-shadow:
+        0 0 8px rgba(0,207,255,0.20);
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 10px;
+      }
+
+      .rgb-shell {
+        height: calc(100vh - 20px);
+      }
+
+      .topbar {
+        padding: 10px 14px;
+      }
+
+      .main-content {
+        padding: 12px;
+      }
+
+      .brand-name {
+        font-size: 0.85rem;
+      }
+
+      #console {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="rgb-shell">
+    <div class="shell">
+      <header class="topbar">
+        <div class="brand">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="13,2 4,14 12,14 11,22 20,10 12,10" 
+             fill="#00CFFF" 
+             stroke="#00CFFF" 
+             stroke-width="0.5"/>
+           </svg>
+          <div>
+            <div class="brand-name"> VOLT JAILBREAK </div>
+            <div class="brand-sub"> +962770582845 </div>
+          </div>
+        </div>
+
+        <div class="version-tag"> FW 5.05 - 9.60 </div>
+      </header>
+
+
+      <!-- MAIN -->
+      <div class="main-content">
+        <div class="header-section">
+          <h1 class="main-title"> Auto VOLT-JB fw5.05, 6.70 - 9.60 </h1>
+        </div>
+
+        <!-- CACHE STATUS -->
+        <div class="cache-status">
+          <span> جاري تحميل الكاش </span>
+          <span id="cache-percent"> 0% </span>
+        </div>
+        <!-- LOADING BAR -->
+        <div class="progress-box">
+          <div class="progress-track">
+            <div id="progress-bar"></div>
+          </div>
+        </div>
+        <!-- CONSOLE -->
+        <div class="console-wrap">
+          <div class="console-bar">
+            <span class="console-title"> مرحلة الكاش </span>
+          </div>
+          <pre id="console"></pre>
+        </div>
+      </div>
+      <!-- FOOTER -->
+      <div class="footer"> 
+           <strong> على مجهودهم الرائع VOLT & Spider For Games تحية وشكر خاص الى </strong>
+      </div>
+    </div>
+  </div>
+  <script>
+    history.replaceState(null, null, 'index.html');
+    var histlength = history.length;
+    history.go(-histlength);
+
+    var outputConsole = document.getElementById("console");
+    window.log = function (msg) {
+      outputConsole.textContent += msg + "\n";
+    };
+    function DLProgress(e) {
+      if (!e || !e.total) return;
+      var percent = (Math.round((e.loaded / e.total) * 100));
+      window.log("[CACHE] Downloading... " + percent + "% complete.");
+      document.getElementById("progress-bar").style.width = percent + "%";
+      document.getElementById("cache-percent").textContent = percent + "%";
+    }
+    function DisplayCacheProgress() {
+      window.log(" ");
+      window.log("[ \u0646\u062C\u062D\u062A \u0627\u0644\u0639\u0645\u0644\u064A\u0629 ]");
+      document.getElementById("progress-bar").style.width = "100%";
+      document.getElementById("cache-percent").textContent = "100%";
+      window.log("\u064A\u0631\u062C\u0649 \u0627\u0639\u0627\u062F\u0629 \u062A\u0634\u063A\u064A\u0644 \u0627\u0644\u062C\u0647\u0627\u0632");
+    }
+    function DLError(e) {
+      window.log(" ");
+      window.log("[\u0641\u0634\u0644\u062A \u0627\u0644\u0639\u0645\u0644\u064A\u0629]");
+    }
+    window.applicationCache.addEventListener("progress", DLProgress, false);
+    window.applicationCache.addEventListener("error", DLError, false);
+    window.applicationCache.oncached = function(e) { DisplayCacheProgress(); };
+    window.applicationCache.onupdateready = function(e) { DisplayCacheProgress(); };
+  </script>
+</body>
+
+<!-- Mirrored from https://voltjo.com/505_960/cache.html by HTTrack Website Copier/3.x [XR&CO], Wed, 04 Nov 2026 12:55:00 GMT -->
+</html>
